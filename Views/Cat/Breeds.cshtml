@@ -20,22 +20,17 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-@if (ViewBag.BreedId != null && ViewBag.BreedId.HasValue && Model.Count > 0)
+@if ( ViewBag.BreedId > 0)
 {
-   var selectedBreed = Model.FirstOrDefault(b => b.Id == (ViewBag.BreedId != null ? ViewBag.BreedId.Value : 0));
-
-    if (selectedBreed != null)
+    foreach(var cat in Model)
     {
-        <h2>@selectedBreed.Name</h2>
-        @if (!string.IsNullOrEmpty(selectedBreed.ImageUrl))
-        {
-            <img src="@selectedBreed.ImageUrl" alt="@selectedBreed.Name">
-        }
-        @if (!string.IsNullOrEmpty(selectedBreed.Description))
-        {
-            <p>@selectedBreed.Description</p>
-        }
+        <h2>@cat.Name</h2>
+        <p>@cat.Description</p>
     }
-}
 
+}
+ @foreach(var cat in Model)
+    {
+        <h2>@cat.Name</h2>
+        <p>@cat.Description</p>
+    }

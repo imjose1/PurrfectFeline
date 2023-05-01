@@ -1,0 +1,41 @@
+﻿@model List<CatBreedModel>
+
+@{
+    ViewData["Title"] = "Breeds";
+}
+
+<h1>Breeds</h1>
+
+<form asp-controller="Cat" asp-action="Breeds" method="get">
+    <div class="form-group">
+        <label for="breedId">Select a breed:</label>
+        <select class="form-control" id="breedId" name="breedId">
+            @foreach (var breed in Model)
+            {
+              <option value="@breed.Id" selected="@((breed.Id.ToString() == ViewBag.BreedId?.ToString()).ToString().ToLower())">@breed.Name</option>
+
+
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (ViewBag.BreedId != null && ViewBag.BreedId.HasValue && Model.Count > 0)
+{
+   var selectedBreed = Model.FirstOrDefault(b => b.Id == (ViewBag.BreedId != null ? ViewBag.BreedId.Value : 0));
+
+    if (selectedBreed != null)
+    {
+        <h2>@selectedBreed.Name</h2>
+        @if (!string.IsNullOrEmpty(selectedBreed.ImageUrl))
+        {
+            <img src="@selectedBreed.ImageUrl" alt="@selectedBreed.Name">
+        }
+        @if (!string.IsNullOrEmpty(selectedBreed.Description))
+        {
+            <p>@selectedBreed.Description</p>
+        }
+    }
+}
+

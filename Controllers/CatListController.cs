@@ -2,11 +2,11 @@
 
 namespace PurrfectFeline.Controllers
 {
-    public class CatsListController : Controller
+    public class CatListController : Controller
     {
         public IActionResult Index()
         {
-            return View("CatsList");
+            return View();
         }
     }
 }

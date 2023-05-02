@@ -1,36 +1,15 @@
-﻿@model List<CatBreedModel>
+﻿@model CatBreedModel
 
-@{
-    ViewData["Title"] = "Breeds";
-}
+
 
 <h1>Breeds</h1>
 
-<form asp-controller="Cat" asp-action="Breeds" method="get">
+<form asp-controller="Cat" asp-action="GetCatByBreed" method="post">
     <div class="form-group">
         <label for="breedId">Select a breed:</label>
-        <select class="form-control" id="breedId" name="breedId">
-            @foreach (var breed in Model)
-            {
-              <option value="@breed.Id" selected="@((breed.Id.ToString() == ViewBag.BreedId?.ToString()).ToString().ToLower())">@breed.Name</option>
-
-
-            }
+        <select asp-items="Model.LstBreed" class="form-select" name="breedId">
+           <option value="Name">select option</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" >Submit</button>
 </form>
-@if ( ViewBag.BreedId > 0)
-{
-    foreach(var cat in Model)
-    {
-        <h2>@cat.Name</h2>
-        <p>@cat.Description</p>
-    }
-
-}
- @foreach(var cat in Model)
-    {
-        <h2>@cat.Name</h2>
-        <p>@cat.Description</p>
-    }

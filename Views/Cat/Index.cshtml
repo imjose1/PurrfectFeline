@@ -1,0 +1,10 @@
+﻿@model BreedTypeModel
+
+
+
+    @foreach(var cat in Model.LstOneCatBreed)
+    {
+        <h2>@cat.Id</h2>
+        <img src="@cat.Url"/>
+    }
+

@@ -67,6 +67,7 @@ namespace PurrfectFeline.Controllers
                 {
                     foreach (var catBreed in getOneBreed)
                     {
+                      
                         oneBreed = new BreedTypeModel();
                         oneBreed.Id = catBreed.Id;
                         oneBreed.Url = catBreed.Url;
@@ -74,7 +75,13 @@ namespace PurrfectFeline.Controllers
                         oneBreed.Height = catBreed.Height;
                         LstOneCatBreed.Add(oneBreed);
 
+                       
+                        
+
                     }
+
+                   
+
                     if (getOneBreed != null)
                     {
                         oneBreed.LstOneCatBreed = LstOneCatBreed;

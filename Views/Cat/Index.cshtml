@@ -2,9 +2,15 @@
 
 
 
-    @foreach(var cat in Model.LstOneCatBreed)
+@foreach (var cat in Model.LstOneCatBreed)
+{
+    <img style="height:200px"src="@cat.Url"/>
+    
+    foreach (var breed in cat.Breeds)
     {
-        <h2>@cat.Id</h2>
-        <img src="@cat.Url"/>
+       
+       
+         
     }
 
+}
